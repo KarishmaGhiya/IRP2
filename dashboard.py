@@ -6,8 +6,7 @@ from lxml import etree
 from archives.belgium import *
 import os, logging, logging.handlers
 import psycopg2 as psycopg2
-import time
-from werkzeug import generate_password_hash, check_password_hash
+from werkzeug import generate_password_hash
 import datetime
 
 DEBUG = True
