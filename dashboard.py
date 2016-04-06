@@ -6,7 +6,8 @@ from lxml import etree
 from archives.belgium import *
 import os, logging, logging.handlers
 import psycopg2 as psycopg2
-from werkzeug import generate_password_hash
+import time
+from werkzeug import generate_password_hash, check_password_hash
 import datetime
 
 DEBUG = True
@@ -149,24 +150,24 @@ def searchafterlogin():
 
 @app.route('/saveSearch',methods=['GET','POST'])
 def saveSearch():
-  inputs = request.form
-  session["inputs"] = inputs
-  _uname = request.form
+  #inputs = request.form
+  inputs = session["inputs"]
+  _uname = session["_uname"]
   results = searchAll(inputs, asyncSearch=True)	
-  return json.dumps(_uname)
-  '''if '_uname' not in session:
-	return render_template("searchafterlogin.html")
-  else:
-  	db = get_db()
-	cur = psycopg2.extensions.cursor(db);
-	#format = "%a %b %d %H:%M:%S %Y"
-	ts = datetime.datetime.utcnow()
-	print('_uname')
-  	cur.execute("INSERT INTO save_search(username, searched_on, search_key, search_results) values('"+ '_uname'+ "','"+str(unicode(ts)) +"','"+str(inputs) +"', '"+json.dumps(results)+"');")	
-  	db.commit()
-  	cur.close()
-  	flash('Search saved  successfully !')
-  	return render_template("searchsaved.html")'''
+  #return json.dumps(inputs["general"])
+  #if _uname not in session:
+  #return render_template("searchafterlogin.html")
+  #else:
+  db = get_db()
+  cur = psycopg2.extensions.cursor(db);
+  #format = "%a %b %d %H:%M:%S %Y"
+  ts = datetime.datetime.utcnow()
+  #print('_uname')
+  cur.execute("INSERT INTO save_search(username, searched_on, search_key, search_results) values('"+ _uname+ "','"+unicode(ts) +"','"+str(inputs["general"]) +"', '"+json.dumps(results)+"');")	
+  db.commit()
+  cur.close()
+  flash('Search saved  successfully !')
+  return render_template("searchsaved.html")
   
   	
 
