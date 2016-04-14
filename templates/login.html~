@@ -16,11 +16,43 @@
       active: false
     });
   });
-
-function emailCurrentPage(){
-
-window.location.href="mailto:?subject="+document.title+"&body="+escape(window.location.href)
-}
+/*window.addEventListener("DOMContentLoaded", function () {
+  var form = document.getElementById("register-form");
+alert("inside signup window action!");
+document.getElementById("Sign up").addEventListener("click", function () {
+alert("inside signup element action!");
+$.ajax({
+			url: '/showLogin#toregister',
+			data: $('form').serialize(),
+			type: 'POST',
+			success: function(response){
+				console.log(response);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});  
+form.submit();
+});*/
+	
+});
+/*$(function(){
+	$('#Sign up').click(function(){
+		alert("inside signup action!");
+		document.writeln("inside signup action!");
+		$.ajax({
+			url: '/showLogin#toregister',
+			data: $('form').serialize(),
+			type: 'POST',
+			success: function(response){
+				console.log(response);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	});
+});*/
 </script>
 <style type="text/css">
         body {
@@ -147,64 +179,249 @@ window.location.href="mailto:?subject="+document.title+"&body="+escape(window.lo
             padding: .4em 0em;
     }
     
-	/* Dropdown Button */
-.dropbtn {
-    background-color: #F4F6F7;
-    color: blue;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+     h4 {
+            font-family: Arial, sans-serif;
+            padding-bottom: 0px;
+            font-size: 1.3em;
+            }
+            
+        #subscribe, #login{
+	       position: relative;
+	       top: 20px;
+	       width: 100%;	
+	       padding: 18px 6% 60px 6%;
+	       margin: 0 0 35px 0;
+	       background: rgb(247, 247, 247);
+	       border: 1px solid rgba(147, 184, 189,0.8);
+	       box-shadow:	
+		      0pt 2px 5px rgba(105, 108, 109,  0.7),	
+		      0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+	       border-radius: 5px;
+            }
+        #login{
+	       z-index: 22;
+            }
+    #wrapper h4{
+	font-size: 24px;
+	color: rgb(6, 106, 117);
+	padding: 2px 0 10px 0;
+	font-family: 'FranchiseRegular','Arial Narrow',Arial,sans-serif;
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 30px;
 }
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
+    #wrapper h4{
+	background: 
+	-webkit-repeating-linear-gradient(-45deg, 
+		rgb(18, 83, 93) , 
+		rgb(18, 83, 93) 20px,
+		rgb(64, 111, 118) 20px,
+		rgb(64, 111, 118) 40px,
+		rgb(18, 83, 93) 40px);
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
 }
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    /*float:center;	*/
+#wrapper h4:after{
+	content:' ';
+	display:block;
+	width:100%;
+	height:2px;
+	margin-top:5px;
+	background: 
+		linear-gradient(left,  
+			rgba(147,184,189,0) 0%,
+			rgba(147,184,189,0.8) 20%,
+			rgba(147,184,189,1) 53%,
+			rgba(147,184,189,0.8) 79%,
+			rgba(147,184,189,0) 100%); 
 }
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: gray;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color:black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
-
     
+    ::-webkit-input-placeholder  { 
+	color: rgb(190, 188, 188); 
+	font-style: italic;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder{ 
+	color: rgb(190, 188, 188);
+	font-style: italic;
+}
+input {
+  outline: none;
+}
+    #wrapper input:not([type="checkbox"]){
+	width: 92%;
+	margin-top: 2px;
+	padding: 5px 2px 5px 10px;	
+	border: 1px solid rgb(178, 178, 178);
+	box-sizing : content-box;
+	border-radius: 3px;
+	box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
+	transition: all 0.2s linear;
+}
+#wrapper input:not([type="checkbox"]):active,
+#wrapper input:not([type="checkbox"]):focus{
+	border: 1px solid rgba(91, 90, 90, 0.7);
+	background: rgba(238, 236, 240, 0.2);	
+	box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.9) inset;
+} 
+    @font-face {
+    font-family: 'FontomasCustomRegular';
+    src: url('fonts/fontomas-webfont.eot');
+    src: url('fonts/fontomas-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/fontomas-webfont.woff') format('woff'),
+         url('fonts/fontomas-webfont.ttf') format('truetype'),
+         url('fonts/fontomas-webfont.svg#FontomasCustomRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/** the magic icon trick ! 
+[data-icon]:after {
+    content: attr(data-icon);
+    font-family: 'FontomasCustomRegular';
+    color: rgb(106, 159, 171);
+    position: relative;
+    left: 5px;
+    top: 20px;
+	width: 15px;
+}**/
+#wrapper p.button input{
+	width: 30%;
+	cursor: pointer;	
+	background: rgb(61, 157, 179);
+	padding: 4px 2px;
+	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
+	color: #fff;
+	font-size: 12px;	
+	border: 1px solid rgb(28, 108, 122);	
+	margin-bottom: 3px;	
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+	border-radius: 3px;	
+	box-shadow:
+		0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+		0px 0px 0px 3px rgb(254, 254, 254),
+		0px 5px 3px 3px rgb(210, 210, 210);
+	transition: all 0.2s linear;
+}
+#wrapper p.button input:hover{
+	background: rgb(74, 179, 198);
+}
+#wrapper p.button input:active,
+#wrapper p.button input:focus{
+	background: rgb(40, 137, 154);
+	position: relative;
+	top: 1px;
+	border: 1px solid rgb(12, 76, 87);	
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.2) inset;
+}
+p.login.button,
+p.signin.button{
+	text-align: right;
+	margin: 5px 0;
+}
+    
+
+.keeplogin input,
+.keeplogin label{
+	display: inline-block;
+	font-size: 12px;	
+	font-style: italic;
+}
+.keeplogin input#loginkeeping{
+	margin-right: 5px;
+}
+.keeplogin label{
+	width: 70%;
+}
+    
+    p.change_link{
+	position: relative;
+	color: rgb(127, 124, 124);
+	left: 0px;
+	height: 50px;
+	width: 100%;
+	padding: 7px 20px 10px 20px;
+	font-size: 15px	;
+	text-align: right;
+	border-top: 1px solid rgb(219, 229, 232);
+	border-radius: 0 0  3px 3px;
+	background: rgb(225, 234, 235);
+	background: repeating-linear-gradient(-45deg, 
+	rgb(247, 247, 247) , 
+	rgb(247, 247, 247) 10px, 
+	rgb(225, 234, 235) 10px, 
+	rgb(225, 234, 235) 20px, 
+	rgb(247, 247, 247) 20px
+	);
+}
+#wrapper p.change_link a {
+	display: inline-block;
+	font-weight: bold;
+	background: rgb(247, 248, 241);
+	padding: 1px 3px;
+	color: rgb(29, 162, 193);
+	margin-left: 10px;
+	text-decoration: none;
+	border-radius: 2px;
+	border: 1px solid rgb(203, 213, 214);
+	transition: all 0.4s  linear;
+}
+#wrapper p.change_link a:hover {
+	color: rgb(57, 191, 215);
+	background: rgb(247, 247, 247);
+	border: 1px solid rgb(74, 179, 198);
+}
+#wrapper p.change_link a:active{
+	position: relative;
+	top: 1px;
+}
+#register{	
+	z-index: 21;
+	opacity: 0;
+}
+    #toregister:target ~ #wrapper #register,
+#tologin:target ~ #wrapper #login{
+	z-index: 22;
+	animation-name: fadeInLeft;
+	animation-delay: .1s;
+}
+    .animate{
+	animation-duration: 0.5s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
+}
+@keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+    #toregister:target ~ #wrapper #login,
+#tologin:target ~ #wrapper #register{
+	animation-name: fadeOutLeftBig;
+}
+
+@keyframes fadeOutLeft {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	
+	100% {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+}
 </style>
 </head>
 <body>
 <div class = "container">
     <div class="header"><img src="static/header.png"/></div>
-{%if session%}    
-<div class="jumbo">
-    <h2><form method = "POST">Profile<h2>
-    <h3>This is {{ session['_uname'] }}'s profile page<h3></form>
-  </div>
-{%endif%}
-
     <div class="row" style="margin:auto;overflow:hidden;height:auto;">
         <div class="col-xs-4 col-md-4">
             <h3>International Research Portal for Records Related to Nazi-Era Cultural Property</h3>
@@ -223,26 +440,10 @@ window.location.href="mailto:?subject="+document.title+"&body="+escape(window.lo
               <li><a href="http://ec2-54-84-35-82.compute-1.amazonaws.com:5003/">Phase 3</a></li>
               <li><a href="http://ec2-54-84-35-82.compute-1.amazonaws.com:5004/">Phase 4</a></li>
             </ul>
-	{%if session%}       
- 	<h3>Your Recent Saved Searches</h3>
-	<ul>
-	      <li><a href="/">WITHIN  1 WEEK</a></li>
-              <li><a href="/">WITHIN 1 MONTH</a></li>
-              <li><a href="">WITHIN 3 MONTHS</a></li>
-              <li><a href="/">WITHIN 6 MONTHS</a></li>
-	      <li><a href="/">WITHIN A YEAR</a></li>
-	
-	</ul>
-	{%endif%}     
-    
- </div> <!-- container -->
-{%if not session%}
-        <div style="float:right;">
-	&nbsp;| &nbsp;
-       <a href="/showLogin">Sign Up</a>&nbsp;| &nbsp;
-         <a href="/showLogin">Login </a>&nbsp;| &nbsp;
-        </div>
-{%endif%}
+              </div> <!-- container -->
+            
+
+       
         <div class="col-xs-8 col-md-8">
             <div style="padding:0em; margin-bottom:0px;  margin-top:-25px; border:1px solid #E4E5E6; border-bottom-color:#C2C3C4; border-left-color:#C2C3C4; border-right-color:#C2C3C4;border-top-color:#C2C3C4; background-color:#F4F6F7; background-image:url(http://www.archives.gov/global-images/layout/boxed-1-bg.gif); background-repeat:repeat-x; padding:.5em; font-size:.7em; float:right; position:relative;">
                 <a href="http://www.archives.gov/research/holocaust/international-resources/">English</a> &nbsp;| &nbsp;
@@ -250,53 +451,76 @@ window.location.href="mailto:?subject="+document.title+"&body="+escape(window.lo
                 <a href="http://www.archives.gov/research/holocaust/international-resources/french.html"><span lang="fr" xml:lang="fr">Français</span></a> &nbsp;| &nbsp;
                 <!-- TEXT VERSION  <a href="/research/holocaust/international-resources/uk/">Ð£ÐºÑ€Ð°Ñ—Ð½ÑÑŒÐºÐ°</a> -->
                 <a href="http://www.archives.gov/research/holocaust/international-resources/uk.html"><span lang="uk" xml:lang="uk">Українська</span></a>
-{%if session%} 
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Your Account</button>
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#">Search Cart</a>
-    <a href="#">Search History</a>
-    <a href="#">Account Settings</a>
-    <a href="/logout">Sign Out</a>	
-  </div>
- </div>               
-{%endif%}                
             </div >
             <h1 style="margin-top: 10px;font-family: Arial, sans-serif;padding-bottom: 0px;font-size: 1.7em; margin-top:10px;">International Research Portal for Records<br> Related to Nazi-Era Cultural Property</h1>
             <p>This page provides keyword search across relevant resources of participating institutions. Resources may include descriptions of archival materials and digital images of the records. Results for each institution are displayed separately and can be accessed with a click on the number of results. To read a description of the resources at an institution, please click on the institution’s logo in search results.</p>
-            <div id="accordion">
+            <!--div id="accordion">
             <h4>More About the Portal</h4>
             <div>
             <p>The International Research Portal is a collaboration of national and other archival institutions with records that pertain to Nazi-Era cultural property. These archival institutions, along with expert national and international organizations, are working together to extend public access to the widely-dispersed records through this single internet Portal. The Portal enables families to research their losses; provenance researchers to locate important documentation; and historians to study newly accessible materials on the history of this period. This collaborative project was established to fulfill the objectives of the <a href="//www.state.gov/p/eur/rt/hlcst/122038.htm">1998 Washington Conference Principles on Nazi-Confiscated Art</a>, the <a href="//www.lootedart.com/MFV7EE39608">2000 Vilnius Forum Declaration</a> and the <a href="//www.state.gov/p/eur/rls/or/126162.htm">2009 Terezin Declaration</a>, particularly to make all such records publicly accessible.</p>
             <p>The Portal links researchers to archival materials consisting of descriptions of records and, in many cases, digital images of the records that relate to cultural property that was stolen, looted, seized, forcibly sold, or otherwise lost during the Nazi era. These records, which are in many different languages, include Nazi documentation, governmental records from 1933 onwards, inventories of recovered artworks, post-war claims records and auction house and art dealer records. Cultural property documented in these records covers a broad range from artworks to books and libraries, religious objects, antiquities, archival documents, carvings, silver and more.</p>
             <p>All descriptions within the Portal are provided in English. As you click through the Portal to affiliated websites, the descriptions are written in the national language of each institution, and in some instances, are available in English, as well.</p>
             </div>
-            </div><br />
-                <h3><form method="GET" action="{{ url_for('search') }}">
-                Search: <input id="searchbox" type="text" class="text" name="general"{% if inputs is defined %} value="{{ inputs.general }}"{% endif %}/>
-                &nbsp;&nbsp;<input type="submit" value="search"/><br />
-                <fieldset><legend>Some collections also support these fields:</legend>
-                Years from <input type="text" class="text" name="startYear" placeholder="E.G. 1933"{% if inputs is defined %} value="{{ inputs.startYear }}"{% endif %}</input>
-                to <input type="text" class="text" name="endYear" placeholder="E.G. 1955"{% if inputs is defined %} value="{{ inputs.endYear }}"{% endif %}/><br />
-                Artist/Creator <input type="text" class="text" name="artist"{% if inputs is defined %} value="{{ inputs.artist }}"{% endif %}/><br />
-                <!-- Owner <input type="text" class="text" name="owner"{% if inputs is defined %} value="{{ inputs.owner }}"{% endif %}/><br />-->
-                Location <input type="text" class="text" name="location"{% if inputs is defined %} value="{{ inputs.location }}"{% endif %}/>
-                </fieldset>
-                </form></h3>
-{%if session%}
-<h3><form id = "save_search" method="POST" action="{{ url_for('saveSearch') }}">
-<input id="SaveSearch" float = "right" type="submit" value="Save my search"><!--a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site: http://www.google.com"/>
-        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
-    </a-->
+            </div-->
+            <div id="container_account" >
+	<!-- hidden anchor to stop jump -->
+	{%block logout%}
+	{%endblock%}
+	<a class="hiddenanchor" id="toregister"></a>
+	<a class="hiddenanchor" id="tologin"></a>
+	<div id="wrapper">
+		<div id="login" class="animate form">
+			<form  method="POST" action="/tologin" autocomplete="on"> 
+				<h4>Log in</h4> 
+				<p> 
+					<label for="username" class="uname"  > Your email or username </label>
+					<input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
+				</p>
+				<p> 
+					<label for="password" class="youpasswd" > Your password </label>
+					<input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+				</p>
+				<p class="keeplogin"> 
+					<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+					<label for="loginkeeping">Keep me logged in</label>
+				</p>
+				<p class="login button"> 
+					<input type="submit" value="Login" /> 
+				</p>
+				<p class="change_link">	Not a member yet ?<a href="#toregister" class="to_register">Join us</a>
+				</p>
+			</form>
+		</div>
 
- 		<a href="javascript: emailCurrentPage()"/>
-        <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a> 
-</form></h3>
+		<div id="register" class="animate form">
+			<form  id="register-form" method="POST" action="/toregister" autocomplete="on"> 
+				<h4> Sign up </h4> 
+				<p> 
+					<label for="usernamesignup" class="uname" >Your username</label>
+					<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
+				</p>
+				<p> 
+					<label for="emailsignup" class="youmail" > Your email</label>
+					<input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+				</p>
+				<p> 
+					<label for="passwordsignup" class="youpasswd" >Your password </label>
+					<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p> 
+					<label for="passwordsignup_confirm" class="youpasswd" >Please confirm your password </label>
+					<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p class="signin button"> 
+					<input type="submit" id="Sign up" />
 
-{%endif%}
-{%block searchSave%}
-{%endblock%}
-                {% block body %}{% endblock %}
+				</p>
+				<p class="change_link"> Already a member ? <a href="#tologin" class="to_register"> Go and log in </a>
+				</p>
+			</form>
+		</div><!--div id -register -->
+    </div> <!--id = wrapper-->
+            </div> 
             <br/>
             <table style="width: 100%;">
                 <tbody><tr><th colspan="2"><h1 style="margin-top: 0px; margin-bottom: 0px; color: #fff;">Search Records of Participating Institutions</h1></th></tr>
@@ -479,26 +703,5 @@ window.location.href="mailto:?subject="+document.title+"&body="+escape(window.lo
 </div>
 </div>
 </body>
-<script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
 </html>

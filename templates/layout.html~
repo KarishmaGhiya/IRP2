@@ -204,7 +204,8 @@ window.location.href="mailto:?subject="+document.title+"&body="+escape(window.lo
     <h3>This is {{ session['_uname'] }}'s profile page<h3></form>
   </div>
 {%endif%}
-
+{%block logout%}
+{%endblock%}
     <div class="row" style="margin:auto;overflow:hidden;height:auto;">
         <div class="col-xs-4 col-md-4">
             <h3>International Research Portal for Records Related to Nazi-Era Cultural Property</h3>

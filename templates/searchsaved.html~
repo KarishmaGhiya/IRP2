@@ -1,0 +1,4 @@
+{% extends "layout.html" %}
+{% block body searchSave %}
+<p>Your search is saved!!</p>
+{% endblock %}
