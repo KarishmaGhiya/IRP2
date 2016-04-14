@@ -1,4 +1,3 @@
-
 __author__ = 'gordon'
 from flask import *
 from archives.core import searchAll
@@ -99,17 +98,23 @@ def tologin():
   db = get_db()
   _uname = request.form['username']
   _password = request.form['password']
-  _password = generate_password_hash(_password)
   cur = psycopg2.extensions.cursor(db);
   cur.execute("SELECT * FROM login_users_info WHERE username = '"+_uname+"' OR email_id = '"+_uname+"' AND password = '"+_password+"' LIMIT 1;")
-  if cur.fetchall > 0 :
-	cur.close()
+  row = cur.fetchone()
+  user = row[0]
+  print user + '\n'
+  pwd = row[1]
+  print pwd + '\n'
+  print _password 
+  print check_password_hash(pwd,_password)	
+  if  _uname == user and check_password_hash(pwd,_password) :
+ 	cur.close()
 	session['_uname'] = _uname
 	return redirect(url_for('profile'))
 	
   else :
 	cur.close()
-	return json.dumps({'html':'<span>Incorrect credentials. PLease try again.. </span>'})
+	return json.dumps({'html':'<span>Incorrect credentials. PLease try again.. </span>'})  
 
   
   
@@ -124,7 +129,7 @@ def tologin():
 def profile():
   if '_uname' not in session:
 	return redirect(url_for('showLogin'))
-  return render_template('afterlogin.html')
+  return render_template('layout.html')
 
 @app.route('/logout')
 def signout():
@@ -135,19 +140,16 @@ def signout():
 
 @app.route('/search', methods=['GET','POST'])
 def search():
-    inputs = request.form
+    if request.method == 'POST':
+    	inputs = request.form
+    if request.method == 'GET':
+    	inputs = request.args
     session["inputs"] = inputs
     results = searchAll(inputs, asyncSearch=True)
     #app.logger.debug("results: \n"+json.dumps(results))
     #app.logger.debug("archivesList: \n"+json.dumps(archivesList))
     return render_template("search.html", results=results, archivesList=archivesList, inputs=inputs)
 
-@app.route('/searchafterlogin', methods=['GET','POST'])
-def searchafterlogin():
-    inputs = request.form
-    session["inputs"] = inputs
-    results = searchAll(inputs, asyncSearch=True)
-    return render_template("searchafterlogin.html", results=results, archivesList=archivesList, inputs=inputs)
 
 @app.route('/saveSearch',methods=['GET','POST'])
 def saveSearch():
@@ -164,7 +166,7 @@ def saveSearch():
   #format = "%a %b %d %H:%M:%S %Y"
   ts = datetime.datetime.utcnow()
   #print('_uname')
-  cur.execute("INSERT INTO save_search(username, searched_on, search_key, search_results) values('"+ _uname+ "','"+unicode(ts) +"','"+str(inputs["general"]) +"', '"+json.dumps(results)+"');")	
+  cur.execute("INSERT INTO save_search(username, searched_on, search_key, search_results) values('"+ _uname+ "','"+unicode(ts) +"','"+json.dumps(inputs) +"', '"+json.dumps(results)+"');")	
   db.commit()
   cur.close()
   flash('Search saved  successfully !')

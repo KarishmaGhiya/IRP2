@@ -20,7 +20,7 @@
 function emailCurrentPage(){
 
 
-window.location.href="mailto:?subject="+document.title+"&body="+escape("http://0.0.0.0:5000/search")
+window.location.href="mailto:?subject="+document.title+"&body="+escape(window.location.href)
   
 }
 </script>
@@ -266,7 +266,7 @@ window.location.href="mailto:?subject="+document.title+"&body="+escape("http://0
            </div>
 	</div><br/>
            
-                <h3><form id="search" method=POST action="{{ url_for('searchafterlogin') }}">
+                <h3><form id="search" method="GET" action="{{ url_for('searchafterlogin') }}">
                 Search: <input id="searchbox" type="text" class="text" name="general"{% if inputs is defined %} value="{{ inputs.general }}"{% endif %}/>
                 &nbsp;&nbsp;<input type="submit" value="search"/>   <br />
 
@@ -281,7 +281,7 @@ window.location.href="mailto:?subject="+document.title+"&body="+escape("http://0
 
 		
 </form></h3>
-<h3><form id = "save_search" method=POST action="{{ url_for('saveSearch') }}">
+<h3><form id = "save_search" method="POST" action="{{ url_for('saveSearch') }}">
 <input id="SaveSearch" float = "right" type="submit" value="Save my search"><!--a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site: http://www.google.com"/>
         <img src="https://simplesharebuttons.com/images/somacro/email.png" alt="Email" />
     </a-->
